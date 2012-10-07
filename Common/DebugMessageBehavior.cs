@@ -2,7 +2,7 @@
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 
-namespace Client
+namespace Common
 {
     public class DebugMessageBehavior : IEndpointBehavior
     {
@@ -18,6 +18,7 @@ namespace Client
 
         public void ApplyDispatchBehavior(ServiceEndpoint endpoint, EndpointDispatcher endpointDispatcher)
         {
+            endpointDispatcher.DispatchRuntime.MessageInspectors.Add(new DebugMessageDispatcher());
         }
 
         public void Validate(ServiceEndpoint endpoint)
